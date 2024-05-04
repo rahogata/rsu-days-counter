@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rsu-days-counter/static/css/main.f855e6bc.css",
+    "main.css": "/rsu-days-counter/static/css/main.85e4aa1b.css",
     "main.js": "/rsu-days-counter/static/js/main.6c28ef51.js",
     "static/js/453.d36d92d0.chunk.js": "/rsu-days-counter/static/js/453.d36d92d0.chunk.js",
     "index.html": "/rsu-days-counter/index.html",
-    "main.f855e6bc.css.map": "/rsu-days-counter/static/css/main.f855e6bc.css.map",
+    "main.85e4aa1b.css.map": "/rsu-days-counter/static/css/main.85e4aa1b.css.map",
     "main.6c28ef51.js.map": "/rsu-days-counter/static/js/main.6c28ef51.js.map",
     "453.d36d92d0.chunk.js.map": "/rsu-days-counter/static/js/453.d36d92d0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
+    "static/css/main.85e4aa1b.css",
     "static/js/main.6c28ef51.js"
   ]
 }
