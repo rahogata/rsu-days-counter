@@ -35,7 +35,6 @@ function App() {
 
     if (days < 0) {
         const prevMonthLastDay = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0).getDate();
-        alert(prevMonthLastDay);
         days += prevMonthLastDay;
         months--;
     }
