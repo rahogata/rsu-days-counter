@@ -6,7 +6,7 @@ import './App.css';
 function App() {
 
   const [price, setPrice] = useState('');
-  const finalDate = '2024-09-15'
+  const finalDate = '2024-09-18'
 
   useEffect(() => {
     const fetchStockPrice = async () => {
