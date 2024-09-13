@@ -6,6 +6,7 @@ import './App.css';
 function App() {
 
   const [price, setPrice] = useState('');
+  const finalDate = '2024-09-15'
 
   useEffect(() => {
     const fetchStockPrice = async () => {
@@ -28,7 +29,7 @@ function App() {
   }, []);
 
   function countTimeLeft(): string {
-    const targetDate: Date = new Date('2024-09-15');
+    const targetDate: Date = new Date(finalDate);
     const currentDate: Date = new Date();
     let months: number = targetDate.getMonth() - currentDate.getMonth();
     let days: number = targetDate.getDate() - currentDate.getDate();
@@ -56,7 +57,7 @@ function App() {
   }
 
   function countDays(): number {
-    const targetDate: Date = new Date('2024-09-18');
+    const targetDate: Date = new Date(finalDate);
     const currentDate: Date = new Date();
     currentDate.setHours(0, 0, 0, 0);
     targetDate.setHours(0, 0, 0, 0);
