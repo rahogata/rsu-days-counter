@@ -56,7 +56,7 @@ function App() {
   }
 
   function countDays(): number {
-    const targetDate: Date = new Date('2024-09-15');
+    const targetDate: Date = new Date('2024-09-18');
     const currentDate: Date = new Date();
     currentDate.setHours(0, 0, 0, 0);
     targetDate.setHours(0, 0, 0, 0);
