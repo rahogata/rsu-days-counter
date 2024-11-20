@@ -68,7 +68,7 @@ function App() {
     }
 
     let result: string = "";
-    if (months < 3) {
+    if (months > 0 && months < 3) {
         result = `${months} month${months > 1 ? 's' : ''} `;
     }
     if (days > 0) {
