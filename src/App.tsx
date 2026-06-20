@@ -1,0 +1,112 @@
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import "./App.css";
+
+function App() {
+  const [price, setPrice] = useState("");
+  const finalDate = "2024-09-17";
+
+  useEffect(() => {
+    const fetchStockPrice = async () => {
+      try {
+        const response = await fetch(
+          "https://finnhub-cfworker.rahogata.workers.dev?symbol=ZS",
+        );
+
+        const data = await response.json();
+
+        setPrice(data.c?.toFixed(2) || "");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchStockPrice();
+  }, []);
+
+  function getMonthsBetweenDates(date1: Date, date2: Date): number {
+    const year1 = date1.getFullYear();
+    const year2 = date2.getFullYear();
+    const month1 = date1.getMonth();
+    const month2 = date2.getMonth();
+    const yearDiff = year2 - year1;
+    const monthDiff = month2 - month1;
+    let totalMonths = yearDiff * 12 + monthDiff;
+    if (date2.getDate() < date1.getDate()) {
+      totalMonths -= 1;
+    }
+    return totalMonths;
+  }
+
+  function getCurrentDate() {
+    return new Date();
+  }
+
+  function getTargetDate() {
+    const next3 = new Date(finalDate);
+    const months =
+      next3.getMonth() +
+      3 * (((getMonthsBetweenDates(next3, getCurrentDate()) / 3) | 0) + 1);
+    next3.setMonth(months);
+    return next3;
+  }
+
+  function countTimeLeft(): string {
+    const targetDate: Date = getTargetDate();
+    const currentDate: Date = getCurrentDate();
+    const months: number = getMonthsBetweenDates(currentDate, targetDate);
+    let days: number = targetDate.getDate() - currentDate.getDate();
+
+    if (days < 0) {
+      const prevMonthLastDay = new Date(
+        targetDate.getFullYear(),
+        targetDate.getMonth(),
+        0,
+      ).getDate();
+      days += prevMonthLastDay;
+    }
+
+    let result: string = "";
+    if (months > 0 && months < 3) {
+      result = `${months} month${months > 1 ? "s" : ""} `;
+    }
+    if (days > 0) {
+      result += `${days} day${days > 1 ? "s" : ""}`;
+    }
+    if (result) {
+      result += " Left";
+    } else {
+      result = "ಲಕ್ಷ್ಮೀ ಬಾರಮ್ಮ";
+    }
+
+    return result.trim();
+  }
+
+  function countDays(): string {
+    const targetDate: Date = getTargetDate();
+    const currentDate: Date = getCurrentDate();
+    currentDate.setHours(0, 0, 0, 0);
+    targetDate.setHours(0, 0, 0, 0);
+    const differenceMs = targetDate.getTime() - currentDate.getTime();
+
+    const daysLeft = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
+    return daysLeft < 90 ? `${daysLeft}` : "";
+  }
+
+  return (
+    <>
+      <Helmet>
+        <title>ZRSU</title>
+      </Helmet>
+      <div className="App">
+        <header className="App-header">
+          <p>{price}</p>
+          <p>{countTimeLeft()}</p>
+          <p>{countDays()}</p>
+        </header>
+      </div>
+    </>
+  );
+}
+
+export default App;
