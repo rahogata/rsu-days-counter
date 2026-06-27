@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# RSU Days Counter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple web application that calculates and displays the number of days until your next RSU (Restricted Stock Unit) vest.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+To get started with this project, follow these steps:
 
-## React Compiler
+1.  **Clone the repository:**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    ```bash
+    git clone https://github.com/your-username/rsu-days-counter.git
+    cd rsu-days-counter
+    ```
 
-## Expanding the ESLint configuration
+2.  **Install dependencies:**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    ```bash
+    npm install
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+To run the project in development mode:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This will open the application in your browser at `http://localhost:3000`. The page will reload if you make edits. You will also see any lint errors in the console.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Publishing to GitHub Pages
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To publish a production build of the application to GitHub Pages, follow these steps:
+
+1.  **Build the project:**
+
+    ```bash
+    npm run build
+    ```
+
+    This command builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+
+    The build is minified, and the filenames include the hashes. Your app is ready to be deployed!
+
+2.  **Deploy to GitHub Pages:**
+
+    First, ensure you have the `homepage` field in your `package.json` file set to your GitHub Pages URL (e.g., `"homepage": "https://your-username.github.io/rsu-days-counter"`).
+
+    Then, deploy the build:
+
+    ```bash
+    npm run deploy
+    ```
+
+    This command will create a `gh-pages` branch and push the contents of the `build` directory to it, which GitHub Pages will then serve.
